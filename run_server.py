@@ -1,4 +1,13 @@
 import os
+import ctypes
+
+# Forzar carga de onnxruntime correcto antes que la DLL del sistema
+_ort_dll = os.path.join(
+    os.path.dirname(__file__),
+    ".venv", "Lib", "site-packages", "onnxruntime", "capi", "onnxruntime.dll"
+)
+if os.path.exists(_ort_dll):
+    ctypes.CDLL(_ort_dll)
 import sys
 import atexit
 import asyncio
@@ -153,6 +162,20 @@ def run(console_log_level: str):
     except Exception as e:
         logger.error(f"Failed to initialize server context: {e}")
         sys.exit(1)  # Exit if initialization fails
+
+    # Register bridge startup in uvicorn's event loop (not in asyncio.run's temp loop)
+    if config.character_config.agent_config.conversation_agent_choice == "lumi_agent":
+        lumi_settings = (
+            config.character_config.agent_config.agent_settings.model_dump()
+            .get("lumi_agent", {})
+        )
+        _bridge_api_key = lumi_settings.get("vps_api_key", "")
+        if _bridge_api_key:
+            @server.app.on_event("startup")
+            async def _start_bridge():
+                from custom.mcp_bridge import bridge_client
+                bridge_client.start(user_id="jose", api_key=_bridge_api_key)
+                logger.info("MCP bridge client started.")
 
     # Run the Uvicorn server
     logger.info(f"Starting server on {server_config.host}:{server_config.port}")

@@ -128,5 +128,25 @@ class AgentFactory:
                 port=settings.get("port"),
             )
 
+        elif conversation_agent_choice == "lumi_agent":
+            from custom.agents.lumi_agent import LumiAgent
+
+            lumi_settings: dict = agent_settings.get("lumi_agent", {})
+            vps_url: str = lumi_settings.get("vps_url", "")
+            vps_api_key: str = lumi_settings.get("vps_api_key", "")
+            if not vps_url or not vps_api_key:
+                raise ValueError(
+                    "lumi_agent requires 'vps_url' and 'vps_api_key' in agent_settings"
+                )
+
+            return LumiAgent(
+                vps_url=vps_url,
+                vps_api_key=vps_api_key,
+                live2d_model=live2d_model,
+                tts_preprocessor_config=tts_preprocessor_config,
+                faster_first_response=lumi_settings.get("faster_first_response", True),
+                segment_method=lumi_settings.get("segment_method", "pysbd"),
+            )
+
         else:
             raise ValueError(f"Unsupported agent type: {conversation_agent_choice}")

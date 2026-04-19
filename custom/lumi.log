@@ -1,0 +1,67 @@
+2026-04-18 20:15:14.670 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 180426201514 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-18 20:15:40.760 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-18 22:37:31.118 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 180426223731 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-18 22:37:46.005 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-18 22:37:53.182 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi hola estoy probando'
+2026-04-18 22:49:00.736 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 180426224900 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-18 22:49:06.570 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-18 22:49:42.134 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi hola'
+2026-04-18 23:17:10.981 | DEBUG    | custom.agents.lumi_agent:_stream:141 | LumiAgent: wake gate blocked — 'qué hay en mi clipboard?'
+2026-04-18 23:17:26.686 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi, que hay en mi clipboard?'
+2026-04-18 23:26:05.543 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'y ahora lumi puede revisar que hay en mi clipboard? porfa'
+2026-04-18 23:27:11.895 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 180426232711 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-18 23:27:20.758 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-18 23:28:41.965 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi hola como esta'
+2026-04-18 23:55:37.575 | INFO     | custom.agents.lumi_agent:__init__:78 | LumiAgent initialized — session: 180426235537 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-18 23:57:08.732 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:95 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-18 23:58:53.348 | INFO     | custom.agents.lumi_agent:__init__:78 | LumiAgent initialized — session: 180426235853 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 00:01:02.873 | INFO     | custom.agents.lumi_agent:__init__:78 | LumiAgent initialized — session: 190426000102 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 00:02:55.458 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:95 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 00:47:09.071 | INFO     | custom.agents.lumi_agent:__init__:78 | LumiAgent initialized — session: 190426004709 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 00:47:35.780 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:95 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 00:48:07.213 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: wake gate blocked — ''
+2026-04-19 00:51:52.102 | INFO     | custom.agents.lumi_agent:__init__:78 | LumiAgent initialized — session: 190426005152 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 00:59:23.345 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426005923 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 00:59:23.396 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:119 | bridge: connecting…
+2026-04-19 00:59:23.943 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connected
+2026-04-19 10:58:25.541 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426105825 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 10:58:25.627 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 10:58:26.190 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 10:58:31.383 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 10:58:52.346 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'Lumi buenos dias, me puede decir que tengo en el portapapeles?'
+2026-04-19 11:03:03.552 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426110303 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 11:03:03.582 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 11:03:04.134 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 11:03:20.059 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 11:03:38.428 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'Lumi buenos dias, me puede decir que tengo en el portapapeles?'
+2026-04-19 11:04:25.760 | INFO     | custom.agents.lumi_agent:handle_interrupt:90 | LumiAgent: interrupt — type=SOFT_PAUSE
+2026-04-19 11:04:26.236 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'pero no tiene las tools para _get_clipboard?'
+2026-04-19 11:09:52.684 | INFO     | custom.agents.lumi_agent:handle_interrupt:90 | LumiAgent: interrupt — type=SOFT_PAUSE
+2026-04-19 11:09:53.156 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi, que tools tiene disponibles?'
+2026-04-19 11:11:21.849 | INFO     | custom.agents.lumi_agent:handle_interrupt:90 | LumiAgent: interrupt — type=SOFT_PAUSE
+2026-04-19 11:11:22.334 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'utilice esa tool y me dice que logra obtener porfa'
+2026-04-19 11:14:13.916 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi, utilice la tool para obtener el clipboard, y me dice que obtiene por favor'
+2026-04-19 11:16:04.359 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426111604 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 11:16:04.391 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 11:16:04.837 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 11:16:10.802 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 11:17:08.394 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi, que tools tiene disponibles?'
+2026-04-19 11:23:22.798 | WARNING  | custom.mcp_bridge.bridge_client:_connect_loop:128 | bridge: connection error — received 1012 (service restart); then sent 1012 (service restart); reconnecting in 5s
+2026-04-19 11:23:27.812 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 11:23:28.329 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 11:23:48.874 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426112348 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 11:23:48.906 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 11:23:49.332 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 11:24:05.331 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 11:24:13.499 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'lumi, que tools tiene disponibles?'
+2026-04-19 11:25:06.667 | INFO     | custom.agents.lumi_agent:handle_interrupt:90 | LumiAgent: interrupt — type=SOFT_PAUSE
+2026-04-19 11:25:07.094 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'quiero que me diga que tengo en el clipboard utilizando la tool acorde'
+2026-04-19 11:25:08.101 | INFO     | custom.mcp_bridge.bridge_client:_handle_message:84 | bridge: tool_call request_id=b042cabc3b77486bab30982efe4c7c7b tool=get_clipboard
+2026-04-19 11:25:08.343 | DEBUG    | custom.mcp_bridge.bridge_client:_handle_message:104 | bridge: tool_result sent request_id=b042cabc3b77486bab30982efe4c7c7b
+2026-04-19 11:28:07.420 | INFO     | custom.agents.lumi_agent:__init__:76 | LumiAgent initialized — session: 190426112807 | endpoint: https://api.drykolf.xyz/lumi/v1/chat
+2026-04-19 11:28:07.451 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:121 | bridge: connecting…
+2026-04-19 11:28:07.899 | INFO     | custom.mcp_bridge.bridge_client:_connect_loop:123 | bridge: connected
+2026-04-19 11:28:16.880 | DEBUG    | custom.agents.lumi_agent:set_memory_from_history:93 | LumiAgent.set_memory_from_history: no-op (VPS owns memory).
+2026-04-19 11:28:23.676 | DEBUG    | custom.agents.lumi_agent:_stream:144 | LumiAgent: sending to VPS — 'Lumi quiero que me diga que tengo en el clipboard utilizando la tool acorde'
+2026-04-19 11:28:24.965 | INFO     | custom.mcp_bridge.bridge_client:_handle_message:84 | bridge: tool_call request_id=8b2f0c5ced9643c29962b66d47aa3c36 tool=get_clipboard
+2026-04-19 11:28:25.116 | DEBUG    | custom.mcp_bridge.bridge_client:_handle_message:104 | bridge: tool_result sent request_id=8b2f0c5ced9643c29962b66d47aa3c36

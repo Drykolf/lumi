@@ -23,6 +23,10 @@ class VoiceRecognition(ASRInterface):
         sense_voice: str = None,  # Path to the model.onnx from SenseVoice
         fire_red_asr_encoder: str = None,  # Path to FireRedASR encoder model
         fire_red_asr_decoder: str = None,  # Path to FireRedASR decoder model
+        canary_encoder: str = None,   # Path to canary encoder.int8.onnx
+        canary_decoder: str = None,   # Path to canary decoder.int8.onnx
+        canary_src_lang: str = "es",  # Idioma de entrada
+        canary_tgt_lang: str = "es",  # Idioma de salida (es=transcripción pura)
         tokens: str = None,  # Path to tokens.txt
         hotwords_file: str = "",  # Path to hotwords file
         hotwords_score: float = 1.5,  # Hotwords score
@@ -68,6 +72,10 @@ class VoiceRecognition(ASRInterface):
         self.SAMPLE_RATE = sample_rate
         self.feature_dim = feature_dim
         self.use_itn = use_itn
+        self.canary_encoder = canary_encoder
+        self.canary_decoder = canary_decoder
+        self.canary_src_lang = canary_src_lang
+        self.canary_tgt_lang = canary_tgt_lang
 
         # we need to find a way to get cuda version of sherpa-onnx before we can
         # use the gpu provider.
@@ -204,6 +212,17 @@ class VoiceRecognition(ASRInterface):
                 tokens=self.tokens,
                 num_threads=self.num_threads,
                 decoding_method=self.decoding_method,
+                debug=self.debug,
+                provider=self.provider,
+            )
+        elif self.model_type == "canary":
+            recognizer = sherpa_onnx.OfflineRecognizer.from_nemo_canary(  # ← from_nemo_canary
+                encoder=self.canary_encoder,
+                decoder=self.canary_decoder,
+                tokens=self.tokens,
+                src_lang=self.canary_src_lang,
+                tgt_lang=self.canary_tgt_lang,
+                num_threads=self.num_threads,
                 debug=self.debug,
                 provider=self.provider,
             )

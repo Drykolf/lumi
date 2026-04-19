@@ -193,6 +193,7 @@ class SherpaOnnxASRConfig(I18nMixin):
         "tdnn_ctc",
         "sense_voice",
         "fire_red_asr",
+        "canary",
     ] = Field(..., alias="model_type")
     encoder: Optional[str] = Field(None, alias="encoder")
     decoder: Optional[str] = Field(None, alias="decoder")
@@ -206,6 +207,10 @@ class SherpaOnnxASRConfig(I18nMixin):
     sense_voice: Optional[str] = Field(None, alias="sense_voice")
     fire_red_asr_encoder: Optional[str] = Field(None, alias="fire_red_asr_encoder")
     fire_red_asr_decoder: Optional[str] = Field(None, alias="fire_red_asr_decoder")
+    canary_encoder: Optional[str] = Field(None, alias="canary_encoder")
+    canary_decoder: Optional[str] = Field(None, alias="canary_decoder")
+    canary_src_lang: str = Field("es", alias="canary_src_lang")
+    canary_tgt_lang: str = Field("es", alias="canary_tgt_lang")
     tokens: str = Field(..., alias="tokens")
     num_threads: int = Field(4, alias="num_threads")
     use_itn: bool = Field(True, alias="use_itn")
@@ -247,6 +252,18 @@ class SherpaOnnxASRConfig(I18nMixin):
         ),
         "fire_red_asr_decoder": Description(
             en="Path to FireredASR decoder model", zh="FireredASR 解码器模型路径"
+        ),
+        "canary_encoder": Description(
+            en="Path to Canary encoder model", zh="Canary 编码器模型路径"
+        ),
+        "canary_decoder": Description(
+            en="Path to Canary decoder model", zh="Canary 解码器模型路径"
+        ),
+        "canary_src_lang": Description(
+            en="Source language for Canary (en, es, de, fr)", zh="Canary 输入语言"
+        ),
+        "canary_tgt_lang": Description(
+            en="Target language for Canary (en, es, de, fr)", zh="Canary 输出语言"
         ),
         "tokens": Description(en="Path to tokens file", zh="词元文件路径"),
         "num_threads": Description(en="Number of threads to use", zh="使用的线程数"),
@@ -302,6 +319,11 @@ class SherpaOnnxASRConfig(I18nMixin):
             if not all([values.fire_red_asr_encoder, values.fire_red_asr_decoder, values.tokens]):
                 raise ValueError(
                     "fire_red_asr_encoder, fire_red_asr_decoder, and tokens must be provided for fire_red_asr model type"
+                )
+        elif model_type == "canary":
+            if not all([values.canary_encoder, values.canary_decoder, values.tokens]):
+                raise ValueError(
+                    "canary_encoder, canary_decoder, and tokens must be provided for canary model type"
                 )
 
         return values

@@ -1,0 +1,9 @@
+lumi
+commit
+deployment
+merge
+branch
+pipeline
+debug
+build
+release
