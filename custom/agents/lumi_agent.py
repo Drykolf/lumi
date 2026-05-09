@@ -32,9 +32,6 @@ from custom.interruption.interrupt_handler import InterruptContext, classify
 from custom.connectivity.vps_health import VpsHealthCheck
 from custom.utils.offline_mode import OfflineState, MSG_OFFLINE, MSG_BACK_ONLINE
 
-_USER_ID = "jose"
-
-
 def _make_session_id() -> str:
     """Generate a session ID from current datetime: DDMMYYHHmmSS."""
     return datetime.now().strftime("%d%m%y%H%M%S")
@@ -50,6 +47,7 @@ class LumiAgent(AgentInterface):
         self,
         vps_url: str,
         vps_api_key: str,
+        user_id: str = "user",
         live2d_model=None,
         tts_preprocessor_config: TTSPreprocessorConfig = None,
         faster_first_response: bool = True,
@@ -59,7 +57,8 @@ class LumiAgent(AgentInterface):
 
         self._chat_url = f"{vps_url.rstrip('/')}/v1/chat"
         self._headers = {"x-api-key": vps_api_key}
-        self._session_id = _make_session_id()
+        self._user_id = user_id
+        self._session_id = "jose_local"#_make_session_id()
 
         self._live2d_model = live2d_model
         self._tts_preprocessor_config = tts_preprocessor_config
@@ -137,6 +136,10 @@ class LumiAgent(AgentInterface):
                 yield MSG_BACK_ONLINE
 
             # ── Wake word gate ──────────────────────────────────────────
+            input_medium = (input_data.metadata or {}).get("input_medium", "unknown")
+            logger.info(f"LumiAgent: input_medium='{input_medium}' content='{content[:10]}'")
+            if input_medium == "asr":
+                return #ignore asr
             if not self._wake_detector.should_respond(content):
                 logger.debug(f"LumiAgent: wake gate blocked — '{content[:60]}'")
                 return
@@ -167,7 +170,7 @@ class LumiAgent(AgentInterface):
         """POST to /v1/chat, parse JSON response, yield the response text."""
         payload = {
             "content": content,
-            "user_id": _USER_ID,
+            "user_id": self._user_id,
             "session_id": self._session_id,
         }
         async with httpx.AsyncClient(

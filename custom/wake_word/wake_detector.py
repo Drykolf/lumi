@@ -21,11 +21,14 @@ from enum import Enum, auto
 
 _WINDOW_SECONDS = 300  # 5 minutes
 
+# ASR phonetic variants of "Lumi": loomy, lomi, lomy, lumy, etc.
+_LUMI_VARIANTS = r"(?:lumi|loomy|lomi|lomy|lumy|loomi|lummi|lummie)"
+
 # "Gracias Lumi" variants — closes the conversation window.
-_CLOSE_PATTERN = re.compile(r"\bgracias\s+lumi\b", re.IGNORECASE)
+_CLOSE_PATTERN = re.compile(rf"\bgracias\s+{_LUMI_VARIANTS}\b", re.IGNORECASE)
 
 # Wake word — opens the window.
-_WAKE_PATTERN = re.compile(r"\blumi\b", re.IGNORECASE)
+_WAKE_PATTERN = re.compile(rf"\b{_LUMI_VARIANTS}\b", re.IGNORECASE)
 
 
 class WindowState(Enum):

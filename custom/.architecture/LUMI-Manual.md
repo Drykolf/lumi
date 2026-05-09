@@ -1117,12 +1117,12 @@ Desde esta fase se establecen los tres principios que acompañarán todo el proy
 
 | Urgencia | Recomendación | Por qué en esta fase |
 |---|---|---|
-| 🟠 **Recomendado** | **#3 Agente Ultra-Ligero** (NanoBot) | Establece la filosofía del código desde el inicio. Si se escribe con esta disciplina, se mantiene; si se escribe pesado, refactorizar después cuesta más. |
-| 🟠 **Recomendado** | **#6 Timing Conversacional — fundamentos** (Neuro-sama) | Streaming obligatorio desde el inicio, interrupción vía `handle_interrupt()`, timeouts de silencio en ASR. Son configuraciones pequeñas, pero si no se hacen ahora, se notan después como "lag". |
+| 🟠 **Recomendado** | **#3 Agente Ultra-Ligero** (NanoBot) | Establece la filosofía del código desde el inicio. Si se escribe con esta disciplina, se mantiene; si se escribe pesado, refactorizar después cuesta más. |✅
+| 🟠 **Recomendado** | **#6 Timing Conversacional — fundamentos** (Neuro-sama) | Streaming obligatorio desde el inicio, interrupción vía `handle_interrupt()`, timeouts de silencio en ASR. Son configuraciones pequeñas, pero si no se hacen ahora, se notan después como "lag". |✅
 | 🟠 **Recomendado** | **#7 Arquitectura Modular de Tres Capas — definición** (OpenClaw/MCP) | No se implementa todo aquí, pero la decisión de estructurar el proyecto en `custom/skills/`, `vps/channels/`, `custom/mcp_bridge/` y servidores MCP se toma ya. Abrir la carpeta `custom/skills/` y dejar 1-2 skills base (personalidad, research) como ejemplo. |
 | 🟠 **Recomendado** | **#18 patrón C — Capabilities Registry** | Trivial de implementar (estructura de datos), establece el patrón desde el inicio para que Lumi nunca ofrezca lo que no puede cumplir. |
 | 🟠 **Recomendado** | **#19 Interrupción Consciente — nivel básico** | Detección + cancelación de TTS + decisión heurística pausar/completar frase. La inteligencia emocional post-interrupción viene después. |
-| 🟡 **Opcional** | **#8 Personalidad Dinámica — scaffolding** | Se puede dejar el scaffolding del `lumi_internal_state` aunque no se use todavía. Mejor definir el JSON ahora y agregarle el loop de actualización en Fase 3-4. |
+| 🟡 **Opcional** | **#8 Personalidad Dinámica — scaffolding** | Se puede dejar el scaffolding del `lumi_internal_state` aunque no se use todavía. Mejor definir el JSON ahora y agregarle el loop de actualización en Fase 3-4. |✅
 
 ---
 
@@ -1160,21 +1160,21 @@ Desde esta fase se establecen los tres principios que acompañarán todo el proy
 
 #### 3.3 Búsqueda web inteligente con clasificador keywords
 
-- [ ] Obtener Brave Search API key (free tier)
-- [ ] Crear `vps/mcp_servers/brave_search/` con clasificador pre-LLM
-- [ ] Integrar: si `needs_web_search()` → llamar Brave → inyectar resultados en contexto antes del LLM
-- [ ] Test con frases que NO deben disparar: "hola Lumi, qué tal tu día", "me siento mal hoy"
-- [ ] Test con frases que SÍ deben disparar: "qué pasó hoy en Colombia", "busca el precio del Bitcoin"
+- [x] Obtener Brave Search API key (free tier)
+- [x] Crear `vps/mcp_servers/brave_search/` con clasificador pre-LLM
+- [x] Integrar: si `needs_web_search()` → llamar Brave → inyectar resultados en contexto antes del LLM
+- [x] Test con frases que NO deben disparar: "hola Lumi, qué tal tu día", "me siento mal hoy"
+- [x] Test con frases que SÍ deben disparar: "qué pasó hoy en Colombia", "busca el precio del Bitcoin"
 
 #### 3.4 Diferenciación de usuarios
 
-- [ ] `user_id` en cada request al VPS
-- [ ] Memoria separada por `user_id` en SQLite (placeholder de Fase 4)
-- [ ] Historial separado por `user_id`
-- [ ] La personalidad ya cambia según user_id por las reglas del Two-Tiered Protocol en el card
+- [x] `user_id` en cada request al VPS
+- [x] Memoria separada por `user_id` en SQLite (placeholder de Fase 4)
+- [x] Historial separado por `user_id`
+- [x] La personalidad ya cambia según user_id por las reglas del Two-Tiered Protocol en el card
 
 #### 3.5 Feature #18 patrón B — Tareas largas asíncronas
-
+--APLAZADO PARA DESPUES-------------------------------------------------
 - [ ] Crear `vps/agent/async_tasks.py` con cola de tareas
 - [ ] Clasificador al inicio del loop: ¿es tarea larga?
 - [ ] Respuesta inmediata *"[thinking] Dame un momento"*
@@ -1197,10 +1197,10 @@ El cambio de arquitectura es profundo pero la experiencia de usuario casi no se 
 
 | Urgencia | Recomendación | Por qué en esta fase |
 |---|---|---|
-| 🔴 **Core** | **#3 Agente Ultra-Ligero — implementación completa** | El `lumi_agent_server.py` ES este feature. Estructurarlo como `agent/loop.py`, `agent/context.py`, `agent/memory.py`, `agent/tools.py`, `agent/router.py` desde el día uno. |
-| 🔴 **Core** | **#7 Arquitectura Modular — MCP Bridge** | La infraestructura del bridge es fundacional para todo lo que viene. Fase 3 sin bridge significaría reescribir después. |
+| 🔴 **Core** | **#3 Agente Ultra-Ligero — implementación completa** | El `lumi_agent_server.py` ES este feature. Estructurarlo como `agent/loop.py`, `agent/context.py`, `agent/memory.py`, `agent/tools.py`, `agent/router.py` desde el día uno. |✅
+| 🔴 **Core** | **#7 Arquitectura Modular — MCP Bridge** | La infraestructura del bridge es fundacional para todo lo que viene. Fase 3 sin bridge significaría reescribir después. |✅
 | 🔴 **Core** | **#18 patrón B — Tareas largas asíncronas** | Sin esto, cualquier investigación pesada bloquea la conversación. Es un problema UX crítico. |
-| 🟠 **Recomendado** | **#7 Skills iniciales** | Habilitar servidores MCP básicos (`time`, `ddg-search`) en la config de OLV y el VPS. Es trivial y abre el camino para el resto del crecimiento. |
+| 🟠 **Recomendado** | **#7 Skills iniciales** | Habilitar servidores MCP básicos (`time`, `ddg-search`) en la config de OLV y el VPS. Es trivial y abre el camino para el resto del crecimiento. |✅
 | 🟠 **Recomendado** | **#8 Personalidad Dinámica — estado interno básico** | Introducir `lumi_internal_state` persistido en SQLite con mood/energía/foco. El prompt_builder ya los inyecta como texto en el suffix dynamic. Sin esto, Lumi suena igual todos los días. |
 | 🟠 **Recomendado** | **#19 Interrupción Consciente — matriz básica** | Clasificación post-interrupción (3 tipos × 3 tonos), selección de patrón de respuesta (resume / redirect / abandon / push-back), reanudación sensible al tono con los ejemplos que definimos. |
 | 🟡 **Opcional** | **#6 Timing Conversacional — reducción de latencia** | Pipeline paralelo (pre-cargar contexto mientras el ASR termina). Vale la pena si la latencia percibida se siente lenta. |
@@ -1229,17 +1229,20 @@ Ahorro neto en VPS 20: ~2 GB de RAM y un contenedor menos, sin pérdida de funci
 
 **Checklist:**
 
-- [ ] Diseñar `docker-compose.yml` con dos servicios: `postgres` (con pgvector + AGE) y `mem0_api`
-- [ ] Configurar Mem0 con `graph_store.provider = "apache_age"`
-- [ ] Configurar Mem0 con `vector_store.provider = "pgvector"` apuntando a misma DB
-- [ ] Configurar LLM extractor: DeepInfra Qwen3.5-9B
-- [ ] Configurar embedder: `BAAI/bge-m3` vía DeepInfra
-- [ ] Reemplazar `sqlite_memory.py` placeholder por `mem0_client.py` (HTTP a Mem0 API)
-- [ ] Migrar datos del placeholder SQLite a Mem0 (script único)
-- [ ] Configurar `user_id` por persona en Mem0
-- [ ] Verificar memory graph: agregar conversación, consultar entidades y relaciones
-- [ ] Implementar reverse proxy de Caddy delante de Mem0 también
-- [ ] Hardening: bind de puertos a `127.0.0.1`, no exponer Postgres ni Mem0 directamente
+- [x] Diseñar `docker-compose.yml` con dos servicios: `postgres` (con pgvector + AGE) y `mem0_api`
+- [-] Configurar Mem0 con `graph_store.provider = "apache_age"`
+- [x] Configurar Mem0 con `vector_store.provider = "pgvector"` apuntando a misma DB
+- [x] Configurar LLM extractor: DeepInfra Qwen3.5-9B
+- [x] Configurar embedder: `BAAI/bge-m3` vía DeepInfra
+- [x] Reemplazar `sqlite_memory.py` placeholder por `mem0_client.py` (HTTP a Mem0 API)
+- [x] Migrar datos del placeholder SQLite a Mem0 (script único)
+- [x] Configurar `user_id` por persona en Mem0
+- [~] Verificar memory graph — N/A: Neo4j eliminado en Mem0 v2.0.0. 
+      Entity linking integrado en pgvector (tabla memories_entities).
+- [~] Reverse proxy Caddy para Mem0 — N/A: Mem0 en 127.0.0.1:8100, 
+      acceso solo interno. FastAPI actúa como proxy cuando es necesario.
+- [x] Hardening: puertos bindeados a 127.0.0.1 desde docker-compose. 
+      Postgres y Mem0 no expuestos al exterior.
 
 **Cálculo de RAM en VPS 20 (12 GB) con esta configuración:**
 
@@ -1323,6 +1326,13 @@ Esta fase es más artística que técnica en su componente TTS/Live2D. El trabaj
 | 🟡 **Opcional** | **#16 Introspección Periódica (Diario Interno)** | Job semanal de autoevaluación de Lumi. Alimenta directamente la curiosidad activa. Tambien es donde Lumi "procesa" emociones negativas sin cargarlas sobre Jose. |
 | 🟡 **Opcional** | **#17 Curiosidad Activa** | Preguntas espontáneas de Lumi basadas en gaps detectados. Requiere perfil viviente robusto + diario interno funcionando. |
 
+- -  Uso con faster-whisper backend + VAD + español
+pip install whisper-streaming
+python whisper_online.py --model large-v3-turbo --lan es --backend faster-whisper --vad audio.wav
+Whisper Streaming con whisper_streaming (recomendada)
+
+Existe ufal/whisper_streaming — una implementación que convierte Whisper en streaming real usando política de local agreement: procesa chunks de audio mientras escuchas y va emitiendo texto confirmado con ~3.3s de latencia total. Usa faster-whisper como backend, soporta large-v3-turbo, y tiene VAD integrado
+https://github.com/ufal/whisper_streaming
 ---
 
 ### Fase 6 — Multi-canal + patrones conversacionales maduros

@@ -177,6 +177,7 @@ class LumiAgentConfig(I18nMixin, BaseModel):
 
     vps_url: str = Field(..., alias="vps_url")
     vps_api_key: str = Field(..., alias="vps_api_key")
+    user_id: str = Field("user", alias="user_id")
     faster_first_response: Optional[bool] = Field(True, alias="faster_first_response")
     segment_method: Literal["regex", "pysbd"] = Field("pysbd", alias="segment_method")
 
@@ -188,6 +189,10 @@ class LumiAgentConfig(I18nMixin, BaseModel):
         "vps_api_key": Description(
             en="API key for the VPS endpoint",
             zh="VPS 端点的 API 密钥",
+        ),
+        "user_id": Description(
+            en="Unique identifier for the user sent to the VPS",
+            zh="发送到 VPS 的用户唯一标识符",
         ),
         "faster_first_response": Description(
             en="Respond as soon as a comma appears in the first sentence to reduce latency",

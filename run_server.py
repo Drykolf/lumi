@@ -170,11 +170,12 @@ def run(console_log_level: str):
             .get("lumi_agent", {})
         )
         _bridge_api_key = lumi_settings.get("vps_api_key", "")
+        _user_id = lumi_settings.get("user_id", "default_user")
         if _bridge_api_key:
             @server.app.on_event("startup")
             async def _start_bridge():
                 from custom.mcp_bridge import bridge_client
-                bridge_client.start(user_id="jose", api_key=_bridge_api_key)
+                bridge_client.start(user_id=_user_id, api_key=_bridge_api_key)
                 logger.info("MCP bridge client started.")
 
     # Run the Uvicorn server

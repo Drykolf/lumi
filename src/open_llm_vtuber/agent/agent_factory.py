@@ -142,6 +142,7 @@ class AgentFactory:
             return LumiAgent(
                 vps_url=vps_url,
                 vps_api_key=vps_api_key,
+                user_id=lumi_settings.get("user_id", "user"),
                 live2d_model=live2d_model,
                 tts_preprocessor_config=tts_preprocessor_config,
                 faster_first_response=lumi_settings.get("faster_first_response", True),

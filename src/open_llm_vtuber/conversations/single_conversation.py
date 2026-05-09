@@ -55,16 +55,18 @@ async def process_single_conversation(
         logger.info(f"New Conversation Chain {session_emoji} started!")
 
         # Process user input
+        input_medium = "asr" if isinstance(user_input, np.ndarray) else "text"
         input_text = await process_user_input(
             user_input, context.asr_engine, websocket_send
         )
 
         # Create batch input
+        combined_metadata = {**(metadata or {}), "input_medium": input_medium}
         batch_input = create_batch_input(
             input_text=input_text,
             images=images,
             from_name=context.character_config.human_name,
-            metadata=metadata,
+            metadata=combined_metadata,
         )
 
         # Store user message (check if we should skip storing to history)
